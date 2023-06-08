@@ -37,7 +37,7 @@ router.post(
         username: user.username,
       };
 
-      setTokenCookie(res, safeUser); // code before had an await
+      await setTokenCookie(res, safeUser); // code before had an await
 
       return res.json({
         user: safeUser
@@ -53,5 +53,24 @@ router.delete(
       return res.json({ message: 'success' });
     }
   );
+
+  // Restore session user
+router.get(
+    '/',
+    (req, res) => {
+      const { user } = req;
+      if (user) {
+        const safeUser = {
+          id: user.id,
+          email: user.email,
+          username: user.username,
+        };
+        return res.json({
+          user: safeUser
+        });
+      } else return res.json({ user: null });
+    }
+  );
+
 
 module.exports = router;

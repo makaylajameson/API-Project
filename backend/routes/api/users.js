@@ -21,7 +21,7 @@ router.post(
         username: user.username,
       };
 
-      setTokenCookie(res, safeUser); // await was here before - deleted it
+      await setTokenCookie(res, safeUser); // await was here before - deleted it
 
       return res.json({
         user: safeUser
