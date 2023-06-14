@@ -109,6 +109,11 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     return res.status(404).json({ message: "Spot couldn't be found" });
   }
 
+   // Check if the spot belongs to the current user
+   if (spot.ownerId !== req.user.id) {
+    return res.status(403).json({ message: "Forbidden" });
+  }
+
   const image = await SpotImage.create({ url, preview, spotId });
 
   res.status(200).json({
@@ -228,7 +233,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 }
     // Check if the spot belongs to the current user
     if (spot.ownerId !== req.user.id) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res.status(403).json({ message: "Forbidden" });
     }
 
     let updateObj = {};
@@ -263,7 +268,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     }
 
     if (spot.ownerId !== req.user.id) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res.status(403).json({ message: "Forbidden" });
     }
 
     await spot.destroy();
@@ -278,6 +283,21 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
   // Find the spot by id and check if it exists
   const spot = await Spot.findByPk(spotId);
+
+     // Errors Array
+     const errors = {};
+
+     // Validate the request body
+     if (!review) errors.review = 'Review text is required';
+     if (stars > 5 || stars < 1) errors.stars = 'Stars must be an integer from 1 to 5';
+
+
+     if (Object.keys(errors).length > 0) {
+       return res.status(400).json({
+       message: 'Bad Request',
+       errors: errors
+   });
+  }
 
   // If it does not exist
   if (!spot) {
@@ -303,10 +323,10 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
   res.status(201).json({
     id: newReview.id,
-    userId: newReview.userId,
-    spotId: newReview.spotId,
-    review: newReview.review,
-    stars: newReview.stars
+    userId: newReview.userId, // delete this line
+    spotId: newReview.spotId, // delete this line
+    review: newReview.review, // delete this line
+    stars: newReview.stars // delete this line
 })
 });
 
