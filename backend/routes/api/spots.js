@@ -2,8 +2,11 @@ const express = require('express');
 const { Spot, User, Booking, SpotImage, Review, ReviewImage } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { urlencoded } = require('express');
+const { urlencoded, request } = require('express');
 const { requireAuth } = require('../../utils/auth');
+const { Op } = require('sequelize');
+const moment = require('moment');
+
 
 const router = express.Router();
 
@@ -353,5 +356,82 @@ router.get('/:spotId/reviews', async (req, res) => {
   // Respond with the reviews
   res.status(200).json({ Reviews: reviews });
 });
+
+// Create a booking from a spot based on the spot's ID
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
+  const spotId = req.params.spotId;
+  const { startDate, endDate } = req.body;
+  const userId = req.user.id;
+
+  const parsedStartDate = moment(startDate, 'YYYY-MM-DD');
+  const parsedEndDate = moment(endDate, 'YYYY-MM-DD');
+
+  const spot = await Spot.findByPk(spotId);
+
+  if (!spot) {
+    return res.status(404).json({ message: "Spot couldn't be found" });
+  }
+
+  const existingBooking = await Booking.findOne({
+    where: {
+      spotId,
+      startDate: { [Op.lte]: parsedEndDate },
+      endDate: { [Op.gte]: parsedStartDate }
+    }
+  });
+
+  if (existingBooking) {
+    return res.status(403).json({ message: "Sorry, this spot is already booked for the specified dates", errors: { startDate: "Start date conflicts with an existing booking", endDate: "End date conflicts with an existing booking" } });
+  }
+
+  const booking = await Booking.create({
+    spotId,
+    userId,
+    startDate,
+    endDate
+  });
+
+  // Return the formatted booking
+  res.status(200).json({
+    id: booking.id,
+    spotId: booking.spotId,
+    userId: booking.userId,
+    startDate: booking.startDate.toISOString().split('T')[0],
+    endDate: booking.endDate.toISOString().split('T')[0],
+    createdAt: booking.createdAt.toISOString().split('T')[0],
+    updatedAt: booking.updatedAt.toISOString().split('T')[0]
+  });
+});
+
+//Get all Bookings for a Spot based on the Spot's id
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+  const spotId = req.params.spotId;
+  const spot = await Spot.findByPk(spotId);
+
+  if (!spot) {
+    return res.status(404).json({ message: "Spot couldn't be found" });
+  }
+
+  if (spot.ownerId === req.user.id) {
+    // If the owner
+    const bookings = await Booking.findAll({
+      where: { spotId },
+      include: [
+        { model: User, attributes: ['id', 'firstName', 'lastName'] }
+      ],
+    });
+
+    return res.status(200).json({ Bookings: bookings });
+  } else {
+    // If not the owner
+    const bookings = await Booking.findAll({
+      where: { spotId },
+      attributes: ['spotId', 'startDate', 'endDate']
+    });
+
+    return res.status(200).json({ Bookings: bookings });
+  }
+});
+
 
 module.exports = router;
