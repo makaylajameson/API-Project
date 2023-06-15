@@ -10,8 +10,43 @@ const moment = require('moment');
 
 const router = express.Router();
 
+const createQueryChecker = (req, res, next) => {
+
+  const { page, size } = req.query
+
+  const errors = {};
+
+  if (size <= 0) errors.size = "Size must be greater than or equal to 1"
+  if (page <= 0) errors.page = "Page must be greater than or equal to 1"
+
+  if (Object.keys(errors).length > 0) {
+    return res.status(400).json({
+      message: 'Bad Request',
+      errors: errors
+    })
+  }
+    next();
+}
+
 // #1 Get all Spots
-router.get('/', async (req, res) => {
+router.get('/', createQueryChecker, async (req, res) => {
+
+  let { page, size } = req.query;
+
+  let pagination = {}
+
+  if (!page || isNaN(page)) page = 1;
+  if (!size || isNaN(size)) size = 20;
+
+  page = parseInt(page);
+  size = parseInt(size);
+
+  if (size > 20) size = 20;
+  if (page > 10) page = 10;
+
+  pagination.limit = size
+  pagination.offset = size * (page - 1)
+
   const spots = await Spot.findAll({
     include: [
       {
@@ -21,10 +56,14 @@ router.get('/', async (req, res) => {
       {
         model: Review
       }
-    ]
+    ],
+
+    ...pagination
+
   });
 
   const allSpots = spots.map(spot => { // creates a new array populated with the results of calling a provided function on every element in the calling array.
+
     const spotObj = spot.toJSON(); // convert the spot object to a plain JSON object
 
     let totalStars = 0;
@@ -44,7 +83,11 @@ router.get('/', async (req, res) => {
     return spotObj;
   });
 
-  res.json({ Spots: allSpots });
+  res.json({
+    Spots: allSpots,
+    page,
+    size
+  });
 });
 
 // #2 Create a spot
