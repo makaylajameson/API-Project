@@ -1,15 +1,10 @@
 const express = require('express');
 const { Spot, User, Booking, SpotImage, Review, ReviewImage } = require('../../db/models');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { urlencoded, request } = require('express');
 const { requireAuth } = require('../../utils/auth');
-const { Op } = require('sequelize');
-const moment = require('moment');
 
 const router = express.Router();
 
-// add an Image to a Review based on the Review's Id
+// #1 Add an Image to a Review based on the Review's Id
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const reviewId = req.params.reviewId;
     const { url } = req.body;
@@ -31,7 +26,6 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
       return res.status(403).json({ message: "Maximum number of images for this review was reached" });
     }
 
-    // Create the new image for the review
     const newImage = await ReviewImage.create({ reviewId, url });
 
     return res.status(200).json({
@@ -40,7 +34,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     });
   });
 
-  // Get All reviews by a current User
+  // #2 Get All reviews by a current User
   router.get('/current', requireAuth, async (req, res) => {
 
     const userId = req.user.id;
@@ -85,7 +79,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     res.status(200).json({ Reviews: formattedReviews });
     });
 
-  // Edit a Review
+  // #3 Edit a Review
     router.put('/:reviewId', requireAuth, async (req,res) => {
         const reviewId = req.params.reviewId;
         const { review, stars } = req.body;
@@ -120,7 +114,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
   })
 
-  // Delete a Review
+  // #4 Delete a Review
   router.delete('/:reviewId', requireAuth, async (req, res) => {
     const reviewId = req.params.reviewId;
     const userId = req.user.id;
@@ -138,43 +132,6 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     await existingReview.destroy();
 
     res.status(200).json({ message: "Successfully deleted" });
-  });
-
-  //Get all of the Current User's Bookings
-  router.get('/current', requireAuth, async (req, res) => {
-    const userId = req.user.id;
-
-    const bookings = await Booking.findAll({
-      where: { userId },
-      include: [
-        {
-          model: Spot,
-          attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'price'],
-          include: [
-            {
-              model: SpotImage,
-              attributes: ['url']
-            }
-          ]
-        }
-      ]
-    });
-
-    const formattedBookings = bookings.map(booking => {
-      const jsonBooking = booking.toJSON();
-
-      const spot = jsonBooking.Spot;
-
-      if (spot.SpotImages.length > 0) {
-        spot.previewImage = spot.SpotImages[0].url;
-      }
-
-      delete spot.SpotImages;
-
-      return jsonBooking;
-    });
-
-    res.status(200).json({ Bookings: formattedBookings });
   });
 
   module.exports = router;
