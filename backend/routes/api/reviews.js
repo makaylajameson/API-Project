@@ -4,12 +4,11 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { urlencoded, request } = require('express');
 const { requireAuth } = require('../../utils/auth');
-const { Op } = require('sequelize');
-const moment = require('moment');
+
 
 const router = express.Router();
 
-// #1 add an Image to a Review based on the Review's Id
+// #1 Add an Image to a Review based on the Review's Id
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const reviewId = req.params.reviewId;
     const { url } = req.body;
@@ -31,7 +30,6 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
       return res.status(403).json({ message: "Maximum number of images for this review was reached" });
     }
 
-    // Create the new image for the review
     const newImage = await ReviewImage.create({ reviewId, url });
 
     return res.status(200).json({
@@ -139,5 +137,6 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
     res.status(200).json({ message: "Successfully deleted" });
   });
+
 
   module.exports = router;
