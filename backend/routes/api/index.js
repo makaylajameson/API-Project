@@ -20,7 +20,7 @@ router.use('/spots', spotsRouter);
 
 // router.use('/bookings', bookingsRouter);
 
-// router.use('/reviews', reviewsRouter);
+router.use('/reviews', reviewsRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
