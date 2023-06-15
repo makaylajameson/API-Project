@@ -403,7 +403,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   });
 });
 
-// #11 Get all Bookings for a Spot based on the Spot's id
+// #1 Get all Bookings for a Spot based on the Spot's id
 router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   const spotId = req.params.spotId;
   const spot = await Spot.findByPk(spotId);
