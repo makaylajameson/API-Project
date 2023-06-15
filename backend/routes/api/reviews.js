@@ -1,10 +1,10 @@
 const express = require('express');
 const { Spot, User, Booking, SpotImage, Review, ReviewImage } = require('../../db/models');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { urlencoded, request } = require('express');
 const { requireAuth } = require('../../utils/auth');
+<<<<<<< HEAD
 
+=======
+>>>>>>> reviews-routes
 
 const router = express.Router();
 
@@ -138,5 +138,8 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     res.status(200).json({ message: "Successfully deleted" });
   });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> reviews-routes
   module.exports = router;
