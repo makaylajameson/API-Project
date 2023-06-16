@@ -81,6 +81,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
     const conflictingBooking = await Booking.findOne({
         where: {
+            // deletes line here
             startDate: { [Op.lte]: endDate },
             endDate: { [Op.gte]: startDate },
         },
