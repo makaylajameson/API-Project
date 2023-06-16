@@ -81,7 +81,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
     const conflictingBooking = await Booking.findOne({
         where: {
-            spotId: req.params.bookingId,
+            // spotId: req.params.bookingId,
             startDate: { [Op.lte]: endDate },
             endDate: { [Op.gte]: startDate },
         },
