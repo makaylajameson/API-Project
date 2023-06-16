@@ -72,6 +72,13 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         return res.status(403).json({ message: "Past bookings can't be modified" })
     }
 
+    if (endDate <= startDate) {
+        return res.status(400).json({ message: "Bad Request",
+          endDate: "endDate cannot come before startDate"
+        })
+    }
+
+
     const conflictingBooking = await Booking.findOne({
         where: {
             spotId: req.params.bookingId,
@@ -88,6 +95,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
                 endDate: "End date conflicts with an existing booking",
             },
         });
+
     }
 
     let updateObj = {};
@@ -104,28 +112,23 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 // Delete a booking
 router.delete('/:bookingId', requireAuth, async (req, res) => {
 
-    const bookingId = req.params.bookingId;
-
-    const booking = await Booking.findByPk(bookingId);
-
-    if (booking.userId !== req.user.id) {
-        return res.status(403).json({ message: "Forbidden" });
-    }
+    const booking = await Booking.findByPk(req.params.bookingId);
+    const currentDate = new Date()
 
     if (!booking) {
         return res.status(404).json({ message: "Booking couldn't be found" });
     }
 
-    const currentDate = new Date().toJSON().slice(0, 10)
-    const bookingStartDate = new Date(booking.startDate);
-
-    if (bookingStartDate <= currentDate) {
-        return res.status(403).json({ message: "Bookings that have been started can't be deleted" });
+    if (booking.userId !== req.user.id) {
+        return res.status(403).json({ message: "Forbidden" });
     }
 
+    if (currentDate >= booking.startDate && currentDate <= booking.endDate) {
+        return res.status(403).json({ message: "Bookings that have been started can't be deleted" });
+    } else {
     await booking.destroy();
-
     res.status(200).json({ message: "Successfully deleted" });
+    }
 });
 
 module.exports = router;

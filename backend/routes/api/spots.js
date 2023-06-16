@@ -356,7 +356,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   });
 
   if (existingReview) {
-    return res.status(403).json({ message: "User already has a review for this spot" });
+    return res.status(500).json({ message: "User already has a review for this spot" });
   }
 
   // Create the review
@@ -439,14 +439,14 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     id: booking.id,
     spotId: booking.spotId,
     userId: booking.userId,
-    startDate: booking.startDate.toISOString().split('T')[0],
-    endDate: booking.endDate.toISOString().split('T')[0],
-    createdAt: booking.createdAt.toISOString().split('T')[0],
-    updatedAt: booking.updatedAt.toISOString().split('T')[0]
+    startDate: booking.startDate,//.toISOString().split('T')[0],
+    endDate: booking.endDate,//.toISOString().split('T')[0],
+    createdAt: booking.createdAt,//.toISOString().split('T')[0],
+    updatedAt: booking.updatedAt//.toISOString().split('T')[0]
   });
 });
 
-// #1 Get all Bookings for a Spot based on the Spot's id
+// #11 Get all Bookings for a Spot based on the Spot's id
 router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   const spotId = req.params.spotId;
   const spot = await Spot.findByPk(spotId);
