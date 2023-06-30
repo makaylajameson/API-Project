@@ -1,22 +1,26 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
+
+  const handleLogoClick = () => {
+    history.push('/');
+  };
 
   return (
-    <nav>
+    <nav className='navbar'>
       <div className='logo-container'>
-        <img src='../icon/earthstay-high-resolution-logo-color-on-transparent-background.png' alt='Logo' className='logo' />
+      <NavLink exact to="/" activeClassName="active-link" onClick={handleLogoClick}>
+          <img src="./icon/earthstay-high-resolution-logo-color-on-transparent-background.png" alt="Logo" className="logo" />
+        </NavLink>
       </div>
-      <ul>
-        <li>
-          <NavLink exact to="/">Home</NavLink>
-        </li>
+      <ul className='nav-links'>
         {isLoaded && (
           <li>
             <ProfileButton user={sessionUser} />
