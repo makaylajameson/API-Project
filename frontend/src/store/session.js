@@ -30,16 +30,23 @@ export const login = (user) => async (dispatch) => {
   dispatch(setUser(data.user));
   return response;
 };
-// is this the right spot
+
+export const logout = () => async (dispatch) => {
+    const response = await csrfFetch("/api/session", {
+      method: "DELETE"
+    });
+    dispatch(removeUser());
+    return response;
+};
+
 export const restoreUser = () => async (dispatch) => {
     const response = await csrfFetch("/api/session");
     const data = await response.json();
     dispatch(setUser(data.user));
     return response;
-  };
+};
 
-//   is this the right spot
-  export const signup = (user) => async (dispatch) => {
+export const signup = (user) => async (dispatch) => {
     const { username, firstName, lastName, email, password } = user;
     const response = await csrfFetch("/api/users", {
       method: "POST",
@@ -55,6 +62,7 @@ export const restoreUser = () => async (dispatch) => {
     dispatch(setUser(data.user));
     return response;
   };
+
 
 const initialState = { user: null };
 
