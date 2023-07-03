@@ -1,0 +1,56 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 400px;
+
+  }
+
+  .login-form form {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-form h1 {
+    text-align: center;
+  }
+
+  .login-form label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .login-form input {
+    width: 70%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .login-form p {
+    text-align: center;
+  }
+
+  .login-form button {
+    margin-top: 1rem;
+  }
+
+  .login-button {
+    box-shadow: 5px 5px 5px grey;
+    width: 77%;
+    color: grey;
+  }
+
+  .demo-user-button {
+    border: none;
+    background: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-bottom: 20px;
+  }

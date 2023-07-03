@@ -1,3 +1,67 @@
 .hidden {
     display: none;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo-container {
+    flex: 0 0 auto;
+  }
+
+  .logo {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .create-new-spot {
+    margin-right: 10px;
+    color: blue;
+    text-decoration: none;
+  }
+
+  .create-new-spot a {
+    display: inline-block;
+  }
+
+  .nav-links li {
+    margin-left: 10px;
+    list-style-type: none;
+  }
+
+  .profile-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40% 40%;
+    background-color: white;
+    cursor: pointer;
+
+  }
+
+  .profile-button i {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .profile-dropdown {
+    list-style-type: none;
+    position: absolute;
+    right: 30px;
+    top: 75px;
+    border: 2px solid black;
+  }
