@@ -28,6 +28,16 @@
     padding: 0;
   }
 
+  .create-new-spot {
+    margin-right: 10px;
+    color: blue;
+    text-decoration: none;
+  }
+
+  .create-new-spot a {
+    display: inline-block;
+  }
+
   .nav-links li {
     margin-left: 10px;
     list-style-type: none;
@@ -40,6 +50,7 @@
     border-radius: 40% 40%;
     background-color: white;
     cursor: pointer;
+
   }
 
   .profile-button i {
@@ -52,4 +63,5 @@
     position: absolute;
     right: 30px;
     top: 75px;
+    border: 2px solid black;
   }

@@ -25,34 +25,38 @@ function LoginFormModal() {
       });
   };
 
+  const demoUserLogin = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+      .then(closeModal)
+  }
+
+  const isDisabled = credential.length < 4 || password.length < 6;
+
   return (
-    <>
-      <h1>Log In</h1>
+    <div className="login-form">
+      <h1 className="login-title">Log In</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
-        <button type="submit">Log In</button>
+        <input className="username-input"
+          type="text"
+          value={credential}
+          onChange={(e) => setCredential(e.target.value)}
+          placeholder="Username or Email"
+          required
+        />
+        {errors.credential && <p className='error-login'>{errors.credential}</p>}
+        <input className="password-input"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="password"
+          required
+        />
+        {errors.password && <p className='error-login'>{errors.password}</p>}
+        <button type="submit" className="login-button" disabled={isDisabled}>Log In</button>
       </form>
-    </>
+      <button onClick={demoUserLogin} className='demo-user-button'>Demo User</button>
+    </div>
   );
 }
 
