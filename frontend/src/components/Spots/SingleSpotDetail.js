@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleSpot } from "../../store/spots";
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import SpotReviews from "../Reviews/SpotReviews";
 import OpenModalButton from '../OpenModalButton'
 import ComingSoonModal from '../ComingSoonModal'
 import './SingleSpotDetails.css'
 
-export default function SpotDetail() {
+export default function SpotDetail( { user }) {
     const { spotId } = useParams();
     const [, setIsLoading] = useState(true);
     const dispatch = useDispatch();
@@ -45,7 +46,7 @@ export default function SpotDetail() {
 
             <div className="spot-image-box">
                 <div className="spot-image">
-                    <img className="preview-image" src={previewImg.url} />
+                    <img className="preview-image" alt='' src={previewImg.url} />
                 </div>
                 <div className='spot-image-tiles'>
                     {SpotImagesExtra.slice(0, 5).map((spot, image) => (
@@ -81,8 +82,10 @@ export default function SpotDetail() {
                     />
                 </div>
 
-            </div>
 
+
+            </div>
+            <SpotReviews props={{ spotId, user, avgStarRating, numReviews, spot }} />
         </div>
 
     )
