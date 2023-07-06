@@ -1,49 +1,47 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchSpotReviews } from "../../store/reviews";
-import { useHistory } from "react-router-dom";
 import DeleteReview from "./DeleteReview";
 import OpenModalButton from "../OpenModalButton";
 
 export default function SpotReviews({ props }) {
+
   const { spotId, avgStarRating, numReviews, spot } = props;
 
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
-
-  const reviews = useSelector((state) => Object.values(state.reviews.spot));
+  const reviews = useSelector((state) => Object.values(state.reviews.spot).reverse());
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(fetchSpotReviews(spotId));
     setIsLoading(false);
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   if (isLoading) return <div>Loading...</div>;
 
   const getMonth = (date) => {
     const event = new Date(date);
-    const month = event.toLocaleString("default", { month: "long" });
-    const year = event.toLocaleString("default", { year: "numeric" });
-    return `${month} ${year}`;
+    const options = { month: "long", year: "numeric" };
+    return event.toLocaleDateString("default", options);
   };
+
 
 
   const spotOwner = user && user.id === spot.Owner.id;
   const hasLeftReview = user && reviews.find((review) => review.User.id === user.id);
 
   return (
+
+
     <div className="spotReviews">
-      <div className="spotDetails-details-reviews" id="review-details">
+      <div className="spot-details-reviews">
         <span className="material-symbols-outlined">star</span>
-        <span className={avgStarRating ? "" : "new-rating"}>
-          {avgStarRating ? avgStarRating : "New!"}
-        </span>
-        <span className={`dot ${numReviews ? "" : "hidden"}`}></span>
-        <span className={numReviews ? "" : "hidden"}>
-          {numReviews === 1 ? `${numReviews} review` : `${numReviews} reviews`}
-        </span>
+        <span className={avgStarRating ? "" : "new-rating"}> {avgStarRating ? avgStarRating : "New!"} </span>
+        <span className="dot">·</span>
+        <span className={numReviews ? "" : "hidden"}> {numReviews === 1 ? `${numReviews} review` : `${numReviews} reviews`}</span>
       </div>
+
 
       {user && !(hasLeftReview || spotOwner || reviews.length > 0) && (<p>Be the first to post a review!</p>)}
 
@@ -53,10 +51,7 @@ export default function SpotReviews({ props }) {
           <p className="reviews-date">{getMonth(review.createdAt)}</p>
           <p className="reviews-review">{review.review}</p>
           {user && review.User.id === user.id && (
-            <OpenModalButton
-              buttonText="Delete Review"
-              modalComponent={<DeleteReview reviewId={review.id} spotId={spot.id} />}
-            />
+            <OpenModalButton buttonText="Delete Review" modalComponent={<DeleteReview reviewId={review.id} spotId={spot.id} />} />
           )}
         </div>
       ))}

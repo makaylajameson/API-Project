@@ -21,10 +21,10 @@ export default function SingleSpotDetail({ spot }) {
                 </div>
                 <div className='spot-rating'>
                     <span className="material-symbols-outlined">star</span>
-                    <span className={avgRating ? 'rating' : 'new-rating'}>{avgRating ? avgRating : 'New!'}</span>
+                    <span className={Number(avgRating).toFixed(2) ? 'rating' : 'new-rating'}>{Number(avgRating).toFixed(2) ? Number(avgRating).toFixed(2) : 'New!'}</span>
                 </div>
                 <div className='spot-price'>
-                    <span className='price'>${price}</span>
+                    <span className='price'>${Number(price).toFixed(2)}</span>
                     <span className='price-unit'>/ night</span>
                 </div>
             </div>

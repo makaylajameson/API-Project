@@ -37,7 +37,6 @@ export default function SpotDetail( { user }) {
     const SpotImagesExtra = SpotImages.filter(image => !image.preview);
 
     return (
-
         <div className="spot-details">
             <div className="spot-details-header">
                 <h1>{name}</h1>
@@ -63,8 +62,8 @@ export default function SpotDetail( { user }) {
 
                 <div className="spot-details-booking">
                     <div className="spot-details-booking-info">
-                        <span className="spot-details-price">${price}</span>
-                        <span className="spot-detail-night"> night</span>
+                        <span className="spot-details-price">${Number(price).toFixed(2)}</span>
+                        <span className="spot-detail-night">/ night</span>
                     </div>
 
                     <div className='spot-rating'>
@@ -78,11 +77,8 @@ export default function SpotDetail( { user }) {
                     <OpenModalButton
                         buttonText="Reserve"
                         modalComponent={<ComingSoonModal />}
-
                     />
                 </div>
-
-
 
             </div>
             <SpotReviews props={{ spotId, user, avgStarRating, numReviews, spot }} />

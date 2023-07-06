@@ -10,12 +10,12 @@ module.exports = {
 
     options.tableName = 'Reviews';
     return queryInterface.bulkInsert(options, [
-      {
-        spotId: 1,
-        userId: 1,
-        review: "This spot was amazing!",
-        stars: 5
-      },
+      // {
+      //   spotId: 1,
+      //   userId: 1,
+      //   review: "This spot was amazing!",
+      //   stars: 5
+      // },
       {
         spotId: 2,
         userId: 2,
@@ -28,24 +28,24 @@ module.exports = {
         review: "Could be better.",
         stars: 2
       },
-      {
-        spotId: 1,
-        userId: 1,
-        review: "Beautiful spot with stunning views.",
-        stars: 5,
-      },
-      {
-        spotId: 1,
-        userId: 2,
-        review: "A hidden gem in nature.",
-        stars: 4,
-      },
-      {
-        spotId: 1,
-        userId: 3,
-        review: "Disappointed with the lack of facilities.",
-        stars: 2,
-      },
+      // {
+      //   spotId: 1,
+      //   userId: 1,
+      //   review: "Beautiful spot with stunning views.",
+      //   stars: 5,
+      // },
+      // {
+      //   spotId: 1,
+      //   userId: 2,
+      //   review: "A hidden gem in nature.",
+      //   stars: 4,
+      // },
+      // {
+      //   spotId: 1,
+      //   userId: 3,
+      //   review: "Disappointed with the lack of facilities.",
+      //   stars: 2,
+      // },
       {
         spotId: 2,
         userId: 1,
