@@ -8,6 +8,7 @@ import ComingSoonModal from '../ComingSoonModal'
 import './SingleSpotDetails.css'
 
 export default function SpotDetail( { user }) {
+
     const { spotId } = useParams();
     const [, setIsLoading] = useState(true);
     const dispatch = useDispatch();
@@ -33,8 +34,10 @@ export default function SpotDetail( { user }) {
         numReviews
     } = spot
 
+    if (!Owner) return < div > Loading...</div >;
+
     const previewImg = SpotImages.find(image => image.preview) || SpotImages[0];
-    const SpotImagesExtra = SpotImages.filter(image => !image.preview);
+    const spotImagesExtra = SpotImages.filter(image => !image.preview);
 
     return (
         <div className="spot-details">
@@ -48,7 +51,7 @@ export default function SpotDetail( { user }) {
                     <img className="preview-image" alt='' src={previewImg.url} />
                 </div>
                 <div className='spot-image-tiles'>
-                    {SpotImagesExtra.slice(0, 5).map((spot, image) => (
+                    {spotImagesExtra.slice(0, 5).map((spot, image) => (
                         <img src={spot.url} key={image} className="tile-image" alt={name} />
                     ))}
                 </div>

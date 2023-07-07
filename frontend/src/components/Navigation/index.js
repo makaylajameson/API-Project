@@ -4,6 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import logo from './Logo/luxebnb.png'
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -17,7 +18,7 @@ function Navigation({ isLoaded }) {
     <nav className='navbar'>
       <div className='logo-container'>
       <NavLink exact to="/" activeClassName="active-link" onClick={handleLogoClick}>
-          <img src="./icon/earthstay-high-resolution-logo-color-on-transparent-background.png" alt="Logo" className="logo" />
+          <img src={logo} className="logo" />
         </NavLink>
       </div>
       <ul className='nav-links'>

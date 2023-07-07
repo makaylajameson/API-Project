@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 // Action Types
 const GET_SPOT_REVIEWS = 'reviews/spot';
-// const ADD_REVIEW = 'reviews/addReview';
+const ADD_REVIEW = 'reviews/addReview';
 const DELETE_REVIEW = 'reviews/deleteReview'
 
 // Action Creators
@@ -13,13 +13,12 @@ const getSpotReviews = (reviews) => {
     }
 }
 
-// const addReview = (review) => {
-//     return {
-//         type: ADD_REVIEW,
-//         payload: review
-
-//     }
-// }
+const addReview = (review) => {
+    return {
+        type: ADD_REVIEW,
+        payload: review
+    }
+}
 
 const deleteReview = (reviewId) => {
     return {
@@ -41,17 +40,21 @@ export const fetchSpotReviews = (spotId) => async (dispatch) => {
     }
 }
 
-// export const createReviewThunk = () => async (dispatch) => {
-//     const response = await csrfFetch(`/api/spots/${spotId}/reviews`)
-//     if (response.ok) {
-//         const reviews = await response.json();
-//         dispatch(getSpotReviews(reviews.Reviews))
-//         return response
-//     } else {
-//         const errors = await response.json();
-//         return errors;
-//     }
-// }
+export const createReviewThunk = (review, spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(fetchSpotReviews(spotId))
+        return data
+    } else {
+        const data = await response.json()
+        return data
+    }
+}
 
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
@@ -62,7 +65,6 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
     return data;
 }
 
-
 // Initial State
 const initialState = {
     spot: {},
@@ -72,15 +74,18 @@ const initialState = {
 // Reducer
 const reviewReducer = (state = initialState, action) => {
     let newState;
+
     switch (action.type) {
         case GET_SPOT_REVIEWS:
-            newState = { ...state, spot: {} };
+            newState = { ...state, spot: {...state.spot} };
             action.payload.forEach(review => newState.spot[review.id] = review);
             return newState;
+
         case DELETE_REVIEW:
             newState = { ...state }
             delete newState.spot[action.payload];
             return newState
+
         default:
             return state;
     }

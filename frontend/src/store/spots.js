@@ -94,15 +94,32 @@ export const createSpotThunk = (spot, spotImages, user) => async (dispatch) => {
   }
 }
 
-export const createSpotImageThunk = (spot, spotImages, user) => async (dispatch) => {
+export const createSpotImageThunk = (spot, spotImages) => async () => {
 
   for (let i = 0; i < spotImages.length; i++) {
     const image = spotImages[i];
 
-     await csrfFetch(`/api/spots/${spot.id}/images`, {
+    await csrfFetch(`/api/spots/${spot.id}/images`, {
       method: "POST",
       body: JSON.stringify(image)
     })
+  }
+}
+
+export const updateSpotThunk = (spot, spotId) => async (dispatch) => {
+
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'PUT',
+    body: JSON.stringify(spot)
+  })
+
+  if (response.ok) {
+    const newSpot = await response.json()
+    dispatch(createSpot(spot))
+    return newSpot
+  } else {
+    const errors = await response.json()
+    return errors
   }
 }
 

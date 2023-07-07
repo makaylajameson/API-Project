@@ -6,8 +6,9 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
 import SingleSpotDetail from "./components/Spots/SingleSpotDetail";
-import  ManageSpots from "./components/Spots/ManageSpots";
-import CreateSpot from "./components/Spots/CreateSpot"
+import ManageSpots from "./components/Spots/ManageSpots";
+import CreateSpot from "./components/Spots/CreateSpot";
+import UpdateSpot from "./components/Spots/UpdateSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path='/spots/current'>
             <ManageSpots />
+          </Route>
+          <Route path="/spots/:spotId/edit">
+            <UpdateSpot />
           </Route>
           <Route path='/spots/:spotId'>
             <SingleSpotDetail />
