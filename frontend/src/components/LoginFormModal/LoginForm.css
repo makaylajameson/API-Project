@@ -41,16 +41,21 @@
   }
 
   .login-button {
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 3px 3px black;
+    border: none;
     width: 77%;
-    color: grey;
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    background-color: lightblue;
+    padding: 5px;
+    border-radius: 4px;
   }
 
   .demo-user-button {
     border: none;
     background: none;
     color: blue;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
     padding-bottom: 20px;
   }

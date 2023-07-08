@@ -14,13 +14,15 @@ const DeleteSpotModal = ({ spot }) => {
       .then(closeModal)
   }
   return (
-    <div>
-      <h1>Confirm Delete</h1>
-      <p>Are you sure you want to remove this spot from your listings?</p>
-      <button onClick={handleDelete}>Yes, Delete Spot!</button>
-      <button onClick={closeModal}>No, Keep Spot!</button>
-    </div>
-  );
+    <div className="delete-review-modal">
+      <h1 className="delete-header">Confirm Delete</h1>
+      <h2 className="delete-subheader">Are you sure you want to remove this spot from your listings?</h2>
+      <div className="delete-button-container">
+        <button className="red-button" onClick={handleDelete}>Yes, Delete Spot!</button>
+        <button className="grey-button" onClick={closeModal}>No, Keep Spot!</button>
+      </div>
+    </div >
+  )
 }
 
 export default DeleteSpotModal

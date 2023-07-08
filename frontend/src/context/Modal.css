@@ -21,4 +21,21 @@
   #modal-content {
     position: absolute;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    padding-bottom: 50px;
+    align-items: center;
+
+
+  }
+
+  .exit-button {
+    box-shadow: 5px 3px 3px black;
+    background-color: lightblue;
+    border: none;
+    border-radius: 4px;
+    width: 100px;
+    padding: 5px;
   }

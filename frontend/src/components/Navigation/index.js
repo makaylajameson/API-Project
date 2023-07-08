@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import './Homepage.css';
 import logo from './Logo/luxebnb.png'
 
 function Navigation({ isLoaded }) {

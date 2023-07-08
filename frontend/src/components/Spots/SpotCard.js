@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import './SpotsIndex.css';
+import './Spots.css';
 
 export default function SingleSpotDetail({ spot }) {
     const { id, name, previewImage, city, state, avgRating, price } = spot;

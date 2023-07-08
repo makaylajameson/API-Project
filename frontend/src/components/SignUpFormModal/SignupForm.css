@@ -44,9 +44,11 @@ input[type="password"] {
   border: none;
   border-radius: 4px;
   box-shadow: 5px 3px 3px black;
-  background-color: coral;
+  background-color: lightblue;
+
 }
 
 .sign-up-button:hover {
   cursor: pointer;
+  transform: translateY(-2px);
 }

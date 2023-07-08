@@ -5,8 +5,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignUpFormModal';
-
-import './Navigation.css';
+import './Homepage.css';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -53,12 +52,12 @@ function ProfileButton({ user }) {
         <span className="material-symbols-outlined">menu</span>
         <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>Hello, {user.username}</li>
+            <li >Hello, {user.username}</li>
             {/* <li>{user.firstName} {user.lastName}</li> */}
-            <li>{user.email}</li>
+            <li >{user.email}</li>
             <NavLink to='/spots/current' id="manage-spots-navLink">Manage Spots</NavLink>
             <li>
               <button onClick={logout}>Log Out</button>
@@ -78,7 +77,7 @@ function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </div>
   );
 }

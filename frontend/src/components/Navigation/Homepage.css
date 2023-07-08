@@ -1,0 +1,127 @@
+.hidden {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: lightblue;
+  }
+
+  .logo-container {
+    flex: 0 0 auto;
+  }
+
+  .logo {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    size: 50px;
+  }
+
+  .logo:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .create-new-spot {
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 10pt;
+    font-family: 'Raleway', sans-serif;
+  }
+  .create-new-spot:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+
+  .create-new-spot a {
+    display: inline-block;
+  }
+
+  .nav-links li {
+    margin-left: 10px;
+    list-style-type: none;
+  }
+
+  .profile-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    cursor: pointer;
+    border: none;
+
+  }
+
+  .profile-dropdown li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 1px;
+
+    font-family: 'Raleway', sans-serif;
+
+  }
+
+  .profile-button i {
+    font-size: medium;
+    color: white;
+    padding: 1px;
+  }
+
+  .profile-dropdown {
+    list-style-type: none;
+    position: absolute;
+    right: 30px;
+    top: 75px;
+    border: 3px solid black;
+    z-index: 1;
+    background-color: white;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+
+  }
+
+  .login-title {
+    color: black;
+    font-family: 'Raleway', sans-serif;
+
+  }
+
+  .material-symbols-outlined {
+    color: white;
+
+  }
+
+  #manage-spots-navLink {
+    text-decoration: none;
+    padding-left: 17px;
+    padding-top: 4px;
+    color: lightblue;
+    font-weight: bolder;
+    padding-bottom: 6px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  #manage-spots-navLink:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+  }

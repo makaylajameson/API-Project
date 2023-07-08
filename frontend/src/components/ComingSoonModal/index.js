@@ -6,7 +6,7 @@ const ComingSoon = () => {
     return (
         <>
             <h2>Feature Coming Soon...</h2>
-            <button onClick={closeModal}>Exit</button>
+            <button className="exit-button" onClick={closeModal}>Exit</button>
         </>
     )
 }

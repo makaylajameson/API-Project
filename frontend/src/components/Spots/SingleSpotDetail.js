@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import SpotReviews from "../Reviews/SpotReviews";
 import OpenModalButton from '../OpenModalButton'
 import ComingSoonModal from '../ComingSoonModal'
-import './SingleSpotDetails.css'
+import './Spots.css'
 
 export default function SpotDetail( { user }) {
 
