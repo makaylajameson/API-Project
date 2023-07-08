@@ -11,14 +11,15 @@ export default function SpotReviews({ props }) {
   const { spotId, avgStarRating, numReviews, spot } = props;
 
   const dispatch = useDispatch();
-  const reviews = useSelector((state) => Object.values(state.reviews.spot)).reverse();
+  const reviewObj = useSelector((state) => state.reviews.spot)
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(fetchSpotReviews(spotId));
   }, [dispatch, spotId]);
 
-  if (!reviews.length) return <div>Loading...</div>;
+
+  const reviews = Object.values(reviewObj).reverse();
 
   const getMonth = (date) => {
     const event = new Date(date);

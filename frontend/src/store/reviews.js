@@ -3,7 +3,8 @@ import { csrfFetch } from "./csrf";
 // Action Types
 const GET_SPOT_REVIEWS = 'reviews/spot';
 const ADD_REVIEW = 'reviews/addReview';
-const DELETE_REVIEW = 'reviews/deleteReview'
+const DELETE_REVIEW = 'reviews/deleteReview';
+const RESET_REVIEWS = 'reviews/clearReviews';
 
 // Action Creators
 const getSpotReviews = (reviews) => {
@@ -13,17 +14,16 @@ const getSpotReviews = (reviews) => {
     }
 }
 
-const addReview = (review) => {
-    return {
-        type: ADD_REVIEW,
-        payload: review
-    }
-}
-
 const deleteReview = (reviewId) => {
     return {
         type: DELETE_REVIEW,
         payload: reviewId
+    }
+}
+
+export const clearReviews = () => {
+    return {
+        type: RESET_REVIEWS
     }
 }
 
@@ -76,14 +76,18 @@ const reviewReducer = (state = initialState, action) => {
     let newState;
 
     switch (action.type) {
+
         case GET_SPOT_REVIEWS:
-            newState = { ...state, spot: {...state.spot} };
+            newState = { ...state, spot: { ...state.spot } };
             action.payload.forEach(review => newState.spot[review.id] = review);
             return newState;
 
+        case RESET_REVIEWS:
+            return initialState
+
         case DELETE_REVIEW:
-            newState = { ...state }
-            delete newState.spot[action.payload];
+            newState = { ...state, spot: { ...state.spot } }
+            delete newState.spot[action.payload]
             return newState
 
         default:

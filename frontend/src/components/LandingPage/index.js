@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetSpots } from "../../store/spots";
 import SpotCard from "../Spots/SpotCard"
+import { clearReviews } from "../../store/reviews";
 
 const SpotsIndex = () => {
 
@@ -13,6 +14,7 @@ const SpotsIndex = () => {
     useEffect(() => {
 
         dispatch(thunkGetSpots());
+        dispatch(clearReviews())
         setIsLoading(false)
 
     }, [dispatch]);
