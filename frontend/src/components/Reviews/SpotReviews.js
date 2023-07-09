@@ -35,7 +35,7 @@ export default function SpotReviews({ props }) {
     <div className="spotReviews">
       <div className="spot-details-reviews">
         <span className="material-symbols-outlined">star</span>
-        <span className={avgStarRating ? "" : "new-rating"}> {avgStarRating ? avgStarRating : "New!"} </span>
+        {avgStarRating ? `${Number(avgStarRating).toFixed(1)}` : 'New!'}
         <span className="dot">·</span>
         <span className={numReviews ? "" : "hidden"}> {numReviews === 1 ? `${numReviews} review` : `${numReviews} reviews`}</span>
       </div>

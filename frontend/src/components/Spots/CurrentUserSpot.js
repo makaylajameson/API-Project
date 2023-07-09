@@ -21,7 +21,7 @@ export default function CurrentUserSpot({ spot }) {
                 </div>
                 <div className='spots-star-rating'>
                     <span className="material-symbols-outlined">star</span>
-                    <span className={avgRating ? '' : 'new-rating'}>{avgRating ? avgRating : 'New!'}</span>
+                    {avgRating ? `${Number(avgRating).toFixed(1)}` : 'New!'}
                 </div>
             </div>
 

@@ -1,0 +1,127 @@
+.landing-page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    grid-template-rows: minmax(200px, 200px);
+    column-gap: 1rem;
+    row-gap: 2rem;
+    margin: 2rem auto;
+    width: 100%;
+
+
+}
+
+
+.user-spots-image {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    grid-template-rows: minmax(200px, 200px);
+
+}
+
+
+
+.spots-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.spots-place {
+    margin-left: 10px;
+    padding-top: 5px;
+
+}
+h1.manage-spots {
+    padding-left: 30px ;
+
+}
+
+div.landing-page {
+    padding-left: 20px;
+}
+
+.create-spot-button {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 5px 3px 3px black;
+    width: 150px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: lightblue;
+    margin-left: 40px;
+
+}
+
+/* .create-spot-button:hover {
+    transform: translateY(-4px);
+    cursor: pointer;
+} */
+
+.spots-star-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 10px;
+    padding-top: 2px;
+}
+
+#spots-star {
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-left: 2px;
+
+}
+
+.spots-price-night {
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+.spots-price {
+    font-weight: bold;
+}
+
+.spots-card-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding-left: 10px;
+}
+
+/* .spots-card-buttons:hover {
+    transform: translateY(-4px);
+    cursor: pointer;
+} */
+
+.update-button {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 5px 3px 3px black;
+    width: 100px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: lightblue;
+}
+
+.update-button:hover {
+    transform: translateY(-4px);
+    cursor: pointer;
+}
+
+button {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 5px 3px 3px black;
+    width: 100px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: lightblue;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    cursor: pointer;
+}

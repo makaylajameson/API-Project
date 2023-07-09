@@ -5,6 +5,7 @@ import CurrentUserSpot from './CurrentUserSpot';
 import { currentUserSpots } from "../../store/spots";
 import DeleteSpotModal from "./DeleteSpotModal";
 import OpenModalButton from "../OpenModalButton";
+import "./ManageSpot.css"
 
 const ManageSpots = () => {
 
@@ -28,19 +29,22 @@ const ManageSpots = () => {
     }
 
     return (
-        <div className="manage-spots">
-            <h1>Manage Spots</h1>
+        <>
+            <h1 className="manage-spots" >Manage Spots</h1>
             <Link to='/spots/new'>
-                <button>Create a new spot!</button>
+                <button className="create-spot-button" >Create a new spot!</button>
             </Link>
             <div className="landing-page">
                 {userSpots.map(spot => (
-                    <div>
+                    <div className="landing-page-card">
+                        <div className="landing-page-images">
                         <CurrentUserSpot spot={spot} key={spot.id} />
+                        </div>
                         <div className='spots-card-buttons'>
-                            <button onClick={() => handleUpdate(spot.id)}>Update Spot</button>
+                            <button className="update-button" onClick={() => handleUpdate(spot.id)}>Update Spot</button>
 
                             <OpenModalButton
+                                className="delete-button"
                                 buttonText="Delete"
                                 modalComponent={<DeleteSpotModal spot={spot} />}
                             />
@@ -48,7 +52,7 @@ const ManageSpots = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     )
 }
 

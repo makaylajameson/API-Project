@@ -1,0 +1,51 @@
+.spot-image-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.preview-image {
+    width: 400px;
+    height: 320px;
+    object-fit: cover;
+    padding-left: 20px;
+    padding-right: 5px;
+    /* border-radius: 21px; */
+
+  }
+
+.spot-image-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 395px;
+    gap: 0.5rem;
+    padding-right: 70px;
+  }
+
+
+
+  .tile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 21px;
+
+  }
+
+  .spot-details-info {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px dotted black;
+  }
+
+  .spot-details-booking-info {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .spot-details-booking {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }

@@ -51,6 +51,12 @@
     border-radius: 4px;
   }
 
+  .login-button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+
+  }
+
   .demo-user-button {
     border: none;
     background: none;
@@ -58,4 +64,5 @@
     text-decoration: none;
     cursor: pointer;
     padding-bottom: 20px;
+    box-shadow: none;
   }

@@ -27,7 +27,7 @@
     padding: 30px;
     padding-bottom: 50px;
     align-items: center;
-
+    border-radius: 21px;
 
   }
 
@@ -38,4 +38,9 @@
     border-radius: 4px;
     width: 100px;
     padding: 5px;
+  }
+
+  .exit-button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
   }

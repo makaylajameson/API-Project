@@ -5,7 +5,9 @@ import { useParams } from 'react-router-dom';
 import SpotReviews from "../Reviews/SpotReviews";
 import OpenModalButton from '../OpenModalButton'
 import ComingSoonModal from '../ComingSoonModal'
-import './Spots.css'
+// import './Spots.css'
+import './SingleSpotDetail.css'
+
 
 export default function SpotDetail( { user }) {
 
@@ -40,14 +42,14 @@ export default function SpotDetail( { user }) {
     const spotImagesExtra = SpotImages.filter(image => !image.preview);
 
     return (
-        <div className="spot-details">
+        <div className="single-spot-details">
             <div className="spot-details-header">
                 <h1>{name}</h1>
                 <h3>{city}, {state}, {country}</h3>
             </div>
 
             <div className="spot-image-box">
-                <div className="spot-image">
+                <div className="spot-image-single">
                     <img className="preview-image" alt='' src={previewImg.url} />
                 </div>
                 <div className='spot-image-tiles'>
@@ -69,9 +71,9 @@ export default function SpotDetail( { user }) {
                         <span className="spot-detail-night">/ night</span>
                     </div>
 
-                    <div className='spot-rating'>
+                    <div className='single-spot-rating'>
                         <span className="material-symbols-outlined">star</span>
-                        <span className={avgStarRating ? 'rating' : 'new-rating'}>{avgStarRating ? avgStarRating : 'New!'}</span>
+                        {avgStarRating ? `${Number(avgStarRating).toFixed(1)}` : 'New!'}
                     </div>
 
                 </div>

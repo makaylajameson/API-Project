@@ -8,6 +8,8 @@
     align-items: center;
     padding: 10px;
     background-color: lightblue;
+    height: 50px;
+    border-bottom: 2px dotted black;
   }
 
   .logo-container {
@@ -15,10 +17,11 @@
   }
 
   .logo {
-    width: 100px;
+    width: 120px;
     height: auto;
     cursor: pointer;
     size: 50px;
+    margin-left: 10px;
   }
 
   .logo:hover {
@@ -62,9 +65,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
+    background-color: white;
+    border-radius: 21px;
     cursor: pointer;
     border: none;
+    margin-right: 10px;
 
   }
 
@@ -73,15 +78,19 @@
     flex-direction: column;
     align-items: center;
     padding-top: 5px;
-    padding-bottom: 1px;
-
+    margin-bottom: 3px;
+    padding-right: 2px;
+    margin-right: 3px;
     font-family: 'Raleway', sans-serif;
+  }
 
+  .profile-dropdown li:hover {
+    cursor: pointer;
   }
 
   .profile-button i {
     font-size: medium;
-    color: white;
+    color: black;
     padding: 1px;
   }
 
@@ -90,13 +99,14 @@
     position: absolute;
     right: 30px;
     top: 75px;
-    border: 3px solid black;
+    border: 1px solid black;
     z-index: 1;
     background-color: white;
     /* display: flex; */
     flex-direction: column;
     justify-content: center;
     padding: 15px;
+    border-radius: 21px;
 
   }
 
@@ -107,21 +117,44 @@
   }
 
   .material-symbols-outlined {
-    color: white;
+    color: black;
 
   }
 
   #manage-spots-navLink {
     text-decoration: none;
-    padding-left: 17px;
+    padding-left: 20px;
     padding-top: 4px;
     color: lightblue;
     font-weight: bolder;
     padding-bottom: 6px;
     font-family: 'Raleway', sans-serif;
+    margin-right: 12px;
+
   }
 
   #manage-spots-navLink:hover {
     cursor: pointer;
     transform: translateY(-2px);
+  }
+
+  .logout-button {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 5px 3px 3px black;
+    width: 75px;
+    background-color: lightblue;
+    padding: 2px;
+    margin-top: 5px;
+  }
+
+  .logout-button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+
+  }
+
+  .error-login {
+    color: red;
   }

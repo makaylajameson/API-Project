@@ -9,6 +9,7 @@ export default function SingleSpotDetail({ spot }) {
         history.push(`/spots/${id}`);
     };
 
+
     return (
         <div className='spot-card' onClick={handleClick}>
             <div className='spot-image-container'>
@@ -21,11 +22,12 @@ export default function SingleSpotDetail({ spot }) {
                 </div>
                 <div className='spot-rating'>
                     <span className="material-symbols-outlined">star</span>
-                    <span className={Number(avgRating).toFixed(2) ? 'rating' : 'new-rating'}>{Number(avgRating).toFixed(2) ? Number(avgRating).toFixed(2) : 'New!'}</span>
+                    {avgRating ? `${Number(avgRating).toFixed(1)}` : 'New!'}
+
                 </div>
                 <div className='spot-price'>
                     <span className='price'>${Number(price).toFixed(2)}</span>
-                    <span className='price-unit'>/ night</span>
+                    <span className='price-unit'>night</span>
                 </div>
             </div>
         </div>
