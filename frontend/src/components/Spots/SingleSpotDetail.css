@@ -25,8 +25,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: center; */
-
 }
 
 h1 {
@@ -55,7 +53,6 @@ div.spotReviews {
   align-items: center;
   gap: 2px;
   padding-bottom: 10px;
-
 }
 
 .spot-image-tiles {
@@ -67,14 +64,11 @@ div.spotReviews {
   padding-right: 70px;
 }
 
-
-
 .tile-image {
   width: 230px;
   height: 230px;
   object-fit: cover;
   border-radius: 21px;
-
 }
 
 .spot-details-info {
@@ -86,7 +80,6 @@ div.spotReviews {
 .spot-details-booking-info {
   display: flex;
   flex-direction: row;
-
 }
 
 .spot-details-booking {

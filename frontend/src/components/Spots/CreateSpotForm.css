@@ -14,7 +14,6 @@
 .city-state-container {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
 }
 
 .handle-form-errors {
@@ -23,8 +22,6 @@
 
 .field-label {
   padding-right: 8px;
-  /* font-size: larger; */
-
 }
 
 p {

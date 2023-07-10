@@ -46,12 +46,12 @@ module.exports = {
       //   review: "Disappointed with the lack of facilities.",
       //   stars: 2,
       // },
-      {
-        spotId: 2,
-        userId: 1,
-        review: "Great spot for a picnic with family.",
-        stars: 4,
-      },
+      // {
+      //   spotId: 2,
+      //   userId: 1,
+      //   review: "Great spot for a picnic with family.",
+      //   stars: 4,
+      // },
       {
         spotId: 2,
         userId: 4,
@@ -64,12 +64,12 @@ module.exports = {
         review: "Not enough parking space available.",
         stars: 3,
       },
-      {
-        spotId: 3,
-        userId: 1,
-        review: "A must-visit spot for nature lovers.",
-        stars: 5,
-      },
+      // {
+      //   spotId: 3,
+      //   userId: 1,
+      //   review: "A must-visit spot for nature lovers.",
+      //   stars: 5,
+      // },
       {
         spotId: 3,
         userId: 2,
@@ -106,12 +106,12 @@ module.exports = {
         review: "Perfect spot for photography enthusiasts.",
         stars: 5,
       },
-      {
-        spotId: 5,
-        userId: 2,
-        review: "The sunset views are breathtaking.",
-        stars: 5,
-      },
+      // {
+      //   spotId: 5,
+      //   userId: 2,
+      //   review: "The sunset views are breathtaking.",
+      //   stars: 5,
+      // },
       {
         spotId: 5,
         userId: 3,
@@ -148,12 +148,12 @@ module.exports = {
         review: "The campsite was clean and well-maintained.",
         stars: 4,
       },
-      {
-        spotId: 7,
-        userId: 3,
-        review: "Limited firewood available for campfires.",
-        stars: 3,
-      },
+      // {
+      //   spotId: 7,
+      //   userId: 3,
+      //   review: "Limited firewood available for campfires.",
+      //   stars: 3,
+      // },
       {
         spotId: 8,
         userId: 1,
@@ -184,24 +184,24 @@ module.exports = {
         review: "Loved kayaking on the calm waters.",
         stars: 4,
       },
-      {
-        spotId: 9,
-        userId: 3,
-        review: "The picnic area needs more shade.",
-        stars: 3,
-      },
+      // {
+      //   spotId: 9,
+      //   userId: 3,
+      //   review: "The picnic area needs more shade.",
+      //   stars: 3,
+      // },
       {
         spotId: 10,
         userId: 1,
         review: "Impressive spot with beautiful waterfalls.",
         stars: 5,
       },
-      {
-        spotId: 10,
-        userId: 4,
-        review: "Hiking trails offer stunning scenic views.",
-        stars: 4,
-      },
+      // {
+      //   spotId: 10,
+      //   userId: 4,
+      //   review: "Hiking trails offer stunning scenic views.",
+      //   stars: 4,
+      // },
       {
         spotId: 10,
         userId: 5,
@@ -232,12 +232,12 @@ module.exports = {
         review: "One of the best spots for fishing.",
         stars: 5,
       },
-      {
-        spotId: 12,
-        userId: 4,
-        review: "Caught some big fish during my visit.",
-        stars: 4,
-      },
+      // {
+      //   spotId: 12,
+      //   userId: 4,
+      //   review: "Caught some big fish during my visit.",
+      //   stars: 4,
+      // },
       {
         spotId: 12,
         userId: 5,
@@ -292,12 +292,12 @@ module.exports = {
         review: "The perfect place to unwind and destress.",
         stars: 5,
       },
-      {
-        spotId: 15,
-        userId: 5,
-        review: "Lack of restroom facilities in the vicinity.",
-        stars: 3,
-      }
+      // {
+      //   spotId: 15,
+      //   userId: 5,
+      //   review: "Lack of restroom facilities in the vicinity.",
+      //   stars: 3,
+      // }
     ], {});
   },
 

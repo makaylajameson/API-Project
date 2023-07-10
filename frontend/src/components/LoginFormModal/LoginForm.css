@@ -54,7 +54,6 @@
   .login-button:hover {
     cursor: pointer;
     transform: translateY(-2px);
-
   }
 
   .demo-user-button {

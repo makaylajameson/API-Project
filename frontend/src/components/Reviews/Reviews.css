@@ -59,12 +59,8 @@ h2.delete-subheader {
 }
 
 .review-input  {
-    /* display: flex;
-    flex-direction: row; */
-    /* position: absolute; */
     width: 285px;
     height: 100px;
-
 }
 
 .star-container {
@@ -74,8 +70,6 @@ h2.delete-subheader {
     align-items: center;
     gap: 5px;
     padding-top: 10px;
-
-
 }
 
 .reviews-date {

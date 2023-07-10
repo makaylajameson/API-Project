@@ -6,34 +6,27 @@
     row-gap: 2rem;
     margin: 2rem auto;
     width: 100%;
-
-
 }
-
 
 .user-spots-image {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
     grid-template-rows: minmax(200px, 200px);
-
 }
-
-
 
 .spots-details {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
+
 .spots-place {
     margin-left: 10px;
     padding-top: 5px;
-
 }
+
 h1.manage-spots {
     padding-left: 30px ;
-
 }
 
 div.landing-page {
@@ -55,11 +48,6 @@ div.landing-page {
 
 }
 
-/* .create-spot-button:hover {
-    transform: translateY(-4px);
-    cursor: pointer;
-} */
-
 .spots-star-rating {
     display: flex;
     flex-direction: row;
@@ -72,7 +60,6 @@ div.landing-page {
     padding-right: 10px;
     padding-top: 3px;
     padding-left: 2px;
-
 }
 
 .spots-price-night {
@@ -90,11 +77,6 @@ div.landing-page {
     gap: 5px;
     padding-left: 10px;
 }
-
-/* .spots-card-buttons:hover {
-    transform: translateY(-4px);
-    cursor: pointer;
-} */
 
 .update-button {
     font-family: 'Raleway', sans-serif;
@@ -121,6 +103,7 @@ button {
     padding-top: 2px;
     padding-bottom: 2px;
     background-color: lightblue;
+    color: black;
 }
 
 button:hover {
