@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateSpotThunk } from '../../store/spots';
+import "./Spots.css"
 
-const UpdateSpot = ( { spot} ) => {
+const UpdateSpot = ({ spot }) => {
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -38,26 +39,26 @@ const UpdateSpot = ( { spot} ) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-    const addSpot = {
-        country,
-        address,
-        lat,
-        lng,
-        city,
-        state,
-        description,
-        name,
-        price,
-      }
+        const addSpot = {
+            country,
+            address,
+            lat,
+            lng,
+            city,
+            state,
+            description,
+            name,
+            price,
+        }
 
-      if (!Object.values(errors).length) {
+        if (!Object.values(errors).length) {
 
-        const newSpot = await dispatch(updateSpotThunk(addSpot, spot.id));
-        const formErrors = { ...errors, Errors: newSpot.errors };
+            const newSpot = await dispatch(updateSpotThunk(addSpot, spot.id));
+            const formErrors = { ...errors, Errors: newSpot.errors };
 
-        if (newSpot.errors) setErrors(formErrors);
-        else await history.push(`/spots/${newSpot.id}`);
-      }
+            if (newSpot.errors) setErrors(formErrors);
+            else await history.push(`/spots/${newSpot.id}`);
+        }
 
     }
 
@@ -69,10 +70,11 @@ const UpdateSpot = ( { spot} ) => {
             <div className='create-spot-header'>
                 <h3>Where's your place located?</h3>
                 <p>Guests will only get your exact address once they booked a reservation.</p>
-
-                <label>
-                    Country
-                </label>
+                <div className="label-errors">
+                    <label className='update-label'>
+                        Country
+                    </label>
+                </div>
                 <input
                     type="text"
                     value={country}
@@ -80,10 +82,11 @@ const UpdateSpot = ( { spot} ) => {
                     placeholder='Country'
                 />
                 <p className='handle-form-errors'>{errors.country}</p>
-
-                <label>
-                    Street Address
-                </label>
+                <div className="label-errors">
+                    <label className='update-label'>
+                        Street Address
+                    </label>
+                </div>
                 <input
                     type="text"
                     value={address}
@@ -91,20 +94,24 @@ const UpdateSpot = ( { spot} ) => {
                     placeholder='Address'
                 />
                 <p className='handle-form-errors'>{errors.address}</p>
+                <div className="label-errors">
 
-                <label>
-                    City
-                </label>
+                    <label className='update-label'>
+                        City
+                    </label>
+                </div>
                 <input
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder='City'
                 /><p className='handle-form-errors'>{errors.city}</p>
+                <div className="label-errors">
 
-                <label>
-                    State
-                </label>
+                    <label className='update-label'>
+                        State
+                    </label>
+                </div>
                 <input
                     type="text"
                     value={state}
@@ -120,6 +127,7 @@ const UpdateSpot = ( { spot} ) => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Description"
+                    className="description-input-update"
                 />
                 <p className='handle-form-errors'>{errors.description}</p>
             </div>
@@ -148,7 +156,7 @@ const UpdateSpot = ( { spot} ) => {
                 <p className='handle-form-errors'>{errors.price}</p>
             </div>
 
-            <button type="submit" onClick={handleSubmit}> Update your Spot</button>
+            <button type="submit" className='update-spot-button' onClick={handleSubmit}> Update your Spot</button>
         </form>
     )
 

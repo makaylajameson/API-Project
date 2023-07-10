@@ -43,3 +43,64 @@ h2.delete-subheader {
     box-shadow: 5px 3px 3px black;
     width: 150px;
 }
+
+.review-form-errors {
+    color: red;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.create-review-header {
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.review-input  {
+    /* display: flex;
+    flex-direction: row; */
+    /* position: absolute; */
+    width: 285px;
+    height: 100px;
+
+}
+
+.star-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+
+
+}
+
+.reviews-date {
+    color: gray;
+}
+
+.reviews-name {
+    color: black;
+    font-size: 17px
+
+}
+
+.reviews-review {
+    font-size: 14px;
+
+}
+
+.material-symbols-outlined:hover {
+    cursor: pointer;
+
+}
+
+.review-button {
+    width: 150px;
+    margin-top: 8px;
+    margin-left: 70px;
+
+}

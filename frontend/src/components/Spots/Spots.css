@@ -5,7 +5,7 @@
   } */
 
   .spot-details-header {
-    margin-bottom: 1rem;
+    padding-left: 40px ;
   }
 
   .spot-details-header h1 {
@@ -16,13 +16,7 @@
     color: #6c757d;
   }
 
-  /* .spot-image-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  } */
+
 
   .spot-image {
     grid-column: 1 / span 2;
@@ -30,30 +24,7 @@
     border-radius: 21px;
   }
 
-  /* .spot-image .preview-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
 
-  /* .spot-image-tiles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.5rem;
-  } */
-
-  /* .tile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
-
-  /* .spot-details-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  } */
 
   .spot-details-description {
     flex: 1;
@@ -103,6 +74,9 @@
 
   .button-action {
     margin-top: 1rem;
+    padding-left: 20px;
+    padding-bottom: 5px;
+
   }
 
   .spot-body {
@@ -160,6 +134,7 @@
     justify-content: flex-end; /* Align rating to the right */
     /* color: black; */
     /* margin-bottom: 8px; */
+    /* color: green; */
   }
 
   .spot-rating i {
@@ -184,4 +159,22 @@
 
   .price-unit {
     color: #6c757d;
+  }
+
+  button.update-spot-button {
+    width: 150px;
+    padding: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px
+  }
+
+  .update-label {
+    padding-bottom: 5px;
+  }
+
+  .description-input-update {
+
+    width: 575px;
+    height: 200px;
+
   }

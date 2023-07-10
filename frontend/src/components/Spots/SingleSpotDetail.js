@@ -5,11 +5,10 @@ import { useParams } from 'react-router-dom';
 import SpotReviews from "../Reviews/SpotReviews";
 import OpenModalButton from '../OpenModalButton'
 import ComingSoonModal from '../ComingSoonModal'
-// import './Spots.css'
 import './SingleSpotDetail.css'
 
 
-export default function SpotDetail( { user }) {
+export default function SpotDetail({ user }) {
 
     const { spotId } = useParams();
     const [, setIsLoading] = useState(true);
@@ -64,25 +63,27 @@ export default function SpotDetail( { user }) {
                     <h3>Hosted by {Owner.firstName} {Owner.lastName}</h3>
                     <p>{description}</p>
                 </div>
+                <div className="spot-detail-border">
+                    <div className="spot-details-booking">
 
-                <div className="spot-details-booking">
-                    <div className="spot-details-booking-info">
-                        <span className="spot-details-price">${Number(price).toFixed(2)}</span>
-                        <span className="spot-detail-night">/ night</span>
+                        <div className="spot-details-booking-info">
+                            <span className="spot-details-price">${Number(price).toFixed(2)}</span>
+                            <span className="spot-detail-night">night</span>
+                        </div>
+
+                        <div className='single-spot-rating'>
+                            <span className="material-symbols-outlined">star</span>
+                            {avgStarRating ? `${Number(avgStarRating).toFixed(1)}` : 'New!'}
+                        </div>
+
                     </div>
 
-                    <div className='single-spot-rating'>
-                        <span className="material-symbols-outlined">star</span>
-                        {avgStarRating ? `${Number(avgStarRating).toFixed(1)}` : 'New!'}
+                    <div className='button-action'>
+                        <OpenModalButton
+                            buttonText="Reserve"
+                            modalComponent={<ComingSoonModal />}
+                        />
                     </div>
-
-                </div>
-
-                <div className='button-action'>
-                    <OpenModalButton
-                        buttonText="Reserve"
-                        modalComponent={<ComingSoonModal />}
-                    />
                 </div>
 
             </div>

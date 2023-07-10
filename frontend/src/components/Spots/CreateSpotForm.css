@@ -1,50 +1,46 @@
-/* .create-spot {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    box-sizing: border-box;
-    padding: 0 25px 25px 25px;
-    border-radius: 25px;
-  }
+.create-spot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .create-spot-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-  }
+.create-spot-header {
+  width: 600px;
+  font-size: 14px ;
 
-  .field-label {
-    text-align: center;
-    margin-bottom: 5px;
-  }
+}
 
-  input[type="text"],
-  input[type="number"],
-  input[type="url"],
-  textarea {
-    width: calc(100% / 3);
-    padding: 5px;
-    margin-bottom: 10px;
-  }
+.city-state-container {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+}
 
-  .handle-form-errors {
-    margin: 0;
-    color: red;
-    font-size: 14px;
-    text-align: center;
-  }
+.handle-form-errors {
+  color: red;
+}
 
-  .country-input,
-  .address-input,
-  .city-input,
-  .state-input {
-    width: calc(50% - 5px);
-    margin: 0 5px;
-  }
+.field-label {
+  padding-right: 8px;
+  /* font-size: larger; */
 
-  .city-input,
-  .state-input {
-    margin-left: 0;
-  } */
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+}
+
+div {
+  font-family: 'Raleway', sans-serif;
+}
+
+.description-input {
+  width: 585px;
+  height: 200px;
+
+}
+
+textarea {
+  font-family: 'Raleway', sans-serif;
+}

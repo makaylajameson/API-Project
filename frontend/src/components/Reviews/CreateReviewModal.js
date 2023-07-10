@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
 import { fetchSingleSpot } from "../../store/spots";
+import './Reviews.css'
 
 export default function CreateReviewModal({ props }) {
   const { spot, user } = props
@@ -11,10 +12,14 @@ export default function CreateReviewModal({ props }) {
   const [stars, setStars] = useState(null);
   const [errors, setErrors] = useState(false);
   const [activeStars, setActiveStars] = useState(null)
-  const [serverError, setServerError] = useState(null);
+  const [serverError, setServerError] = useState(false);
 
   const dispatch = useDispatch();
   const { closeModal } = useModal()
+  let disable = false
+  review.length > 9 || (disable = true);
+  stars || (disable = true);
+
 
   useEffect(() => {
     let errors = {}
@@ -46,16 +51,25 @@ export default function CreateReviewModal({ props }) {
     }
   };
 
+  const noShowError = () => {
+    if (review.length < 10) {
+      setServerError(true);
+    } else {
+      setServerError(false);
+    }
+  };
+
   return (
     <form className="review-form" onSubmit={handleSubmit}>
-      <h2>How was your stay?</h2>
-      {errors.review && <p className='errors form__errors'>{errors.review}</p>}
+      <h2 className="create-review-header" >How was your stay?</h2>
       <textarea
         value={review}
+        className="review-input"
         onChange={(e) => setReview(e.target.value)}
         placeholder="Leave your review here...."
+        onBlur={noShowError}
       />
-      {serverError && <p className='errors form__errors'>Review must be more than 10 characters.</p>}
+      {serverError && <p className='review-form-errors'>Review must be more than 10 characters.</p>}
 
       <div className="star-container">
         <div className={stars >= 1 || activeStars >= 1 ? 'star-filled' : 'star-empty'}
@@ -101,7 +115,7 @@ export default function CreateReviewModal({ props }) {
         <span> Stars</span>
       </div>
 
-      <button type="submit" disabled={Object.values(errors).length > 0} >Submit Your Review</button>
+      <button type="submit" className="review-button" disabled={Object.values(errors).length > 0} >Submit Your Review</button>
 
     </form>
   )
